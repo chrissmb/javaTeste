@@ -58,16 +58,20 @@ public class Matrix {
         map((v, row, col) -> result.get(row, col));
     }
 
+    public void randomize() {
+        map((v, row, col) -> Math.random());
+    }
+
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("000.00");
         String str = "";
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[0].length; j++) {
-                str += get(i, j) + ", ";
+                str += df.format(get(i, j)) + ", ";
             }
             str += "\n";
         }
-        return super.toString();
+        return str;
     }
 }
