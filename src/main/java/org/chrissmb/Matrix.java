@@ -1,5 +1,6 @@
 package org.chrissmb;
 
+import java.text.DecimalFormat;
 import java.util.function.Function;
 
 public class Matrix {
@@ -46,14 +47,27 @@ public class Matrix {
 
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
+                double soma = 0;
                 for (int k = 0; j < data[j].length; k++) {
-                    result.set(i, j, get(i, k) * matrix.get(k, i));
+                    soma += get(i, k) * matrix.get(k, i);
                 }
+                result.set(i, j, soma);
             }
         }
 
         map((v, row, col) -> result.get(row, col));
     }
 
-
+    @Override
+    public String toString() {
+        DecimalFormat df = new DecimalFormat("000.00");
+        String str = "";
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                str += get(i, j) + ", ";
+            }
+            str += "\n";
+        }
+        return super.toString();
+    }
 }
