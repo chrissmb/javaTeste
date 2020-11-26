@@ -21,15 +21,15 @@ public class Matrix {
         data[row][col] = v;
     }
 
-    public void map(Function<Double, Double> fn) {
+    public void map(ApplyMatrix fn) {
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
-                data[i][j] = isNull(fn.apply(isNull(data[i][j])));
+                data[i][j] = fn.apply(get(i, j), i, j);
             }
         }
     }
 
-    private double isNull(Double v) {
-        return v == null ? 0d : v;
+    public void sum(Matrix matrix) {
+        map((v, row, col) -> v + matrix.get(row, col));
     }
 }
