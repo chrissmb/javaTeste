@@ -45,11 +45,18 @@ public class Matrix {
         }
     }
 
-    public void sum(Matrix matrix) {
+    public void sum(Matrix matrix) throws Exception {
+        if (getColLength() != matrix.getColLength() || getRowLength() != matrix.getRowLength()) {
+            throw new Exception("Matrizes com largura ou tamanho diferente conforme regra de soma de matriz.");
+        }
         map((v, row, col) -> v + matrix.get(row, col));
     }
 
-    public void multiply(Matrix matrix) {
+    public void multiply(Matrix matrix) throws Exception {
+        if (getRowLength() != matrix.getColLength() || getColLength() != matrix.getRowLength()) {
+            throw new Exception("Matrizes com largura ou tamanho diferente conforme regra de multiplicação de matriz.");
+        }
+
         Matrix result = new Matrix(data.length, data[0].length);
 
         for (int i = 0; i < data.length; i++) {
@@ -88,7 +95,7 @@ public class Matrix {
             return false;
         }
         Matrix matrix = (Matrix) obj;
-        
+
         if (matrix.getColLength() != getColLength() && matrix.getRowLength() != getRowLength()) {
             return false;
         }
