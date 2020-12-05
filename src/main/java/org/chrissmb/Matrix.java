@@ -55,12 +55,25 @@ public class Matrix {
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
                 double soma = 0;
-                for (int k = 0; j < data[j].length; k++) {
-                    soma += get(i, k) * matrix.get(k, i);
+                for (int k = 0; k < data[j].length; k++) {
+                    soma += get(i, k) * matrix.get(k, j);
                 }
                 result.set(i, j, soma);
             }
         }
+        /*
+        0 0 - 0 0 
+        0 1 - 1 0
+        
+        0 0 - 0 1
+        0 1 - 1 1
+
+        1 0 - 0 0
+        1 1 - 0 1
+        
+        1 0 - 1 0
+        1 1 - 1 1
+        */
 
         map((v, row, col) -> result.get(row, col));
     }
