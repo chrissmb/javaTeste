@@ -1,7 +1,6 @@
 package org.chrissmb;
 
 import java.text.DecimalFormat;
-import java.util.function.Function;
 
 public class Matrix {
 
@@ -9,6 +8,10 @@ public class Matrix {
 
     public Matrix(int row, int col) {
         data = new Double[row][col];
+    }
+
+    public Matrix(Double[][] data) {
+        this.data = data;
     }
 
     public double get(int row, int col) {
@@ -28,6 +31,10 @@ public class Matrix {
 
     public int getColLength() {
         return data[0].length;
+    }
+
+    public void setData(Double[][] data) {
+        this.data = data;
     }
 
     public void map(ApplyMatrix fn) {
@@ -73,5 +80,27 @@ public class Matrix {
             str += "\n";
         }
         return str;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || !(obj instanceof Matrix)) {
+            return false;
+        }
+        Matrix matrix = (Matrix) obj;
+        
+        if (matrix.getColLength() != getColLength() && matrix.getRowLength() != getRowLength()) {
+            return false;
+        }
+
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                if (get(i, j) != matrix.get(i, j)) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 }
