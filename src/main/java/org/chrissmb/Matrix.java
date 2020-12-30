@@ -37,23 +37,29 @@ public class Matrix {
         this.data = data;
     }
 
-    public void map(ApplyMatrix fn) {
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < data[i].length; j++) {
-                data[i][j] = fn.apply(get(i, j), i, j);
-            }
-        }
+    public Double[][] getData() {
+        return data;
     }
 
-    public void sum(Matrix matrix) {
+    public Matrix map(ApplyMatrix fn) {
+        Matrix m = new Matrix(getRowLength(), getColLength());
+        for (int i = 0; i < m.getRowLength(); i++) {
+            for (int j = 0; j < m.getColLength(); j++) {
+                m.set(i, j, fn.apply(get(i, j), i, j));
+            }
+        }
+        return m;
+    }
+
+    public Matrix sum(Matrix matrix) {
         if (getColLength() != matrix.getColLength() || getRowLength() != matrix.getRowLength()) {
             throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de soma de matriz.");
         }
-        map((v, row, col) -> v + matrix.get(row, col));
+        return map((v, row, col) -> v + matrix.get(row, col));
     }
 
-    public void multiply(Matrix matrix) {
-        if (getRowLength() != matrix.getColLength() || getColLength() != matrix.getRowLength()) {
+    public Matrix multiply(Matrix matrix) {
+        if (getRowLength() != matrix.getColLength() && getColLength() != matrix.getRowLength()) {
             throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de multiplicação de matriz.");
         }
 
@@ -69,7 +75,7 @@ public class Matrix {
             }
         }
 
-        map((v, row, col) -> result.get(row, col));
+        return map((v, row, col) -> result.get(row, col));
     }
 
     public void randomize() {
