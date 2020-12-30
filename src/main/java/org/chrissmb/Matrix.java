@@ -59,7 +59,7 @@ public class Matrix {
     }
 
     public Matrix multiply(Matrix matrix) {
-        if (getRowLength() != matrix.getColLength() && getColLength() != matrix.getRowLength()) {
+        if (getRowLength() != matrix.getColLength()) {
             throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de multiplicação de matriz.");
         }
 
