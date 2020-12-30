@@ -45,16 +45,16 @@ public class Matrix {
         }
     }
 
-    public void sum(Matrix matrix) throws Exception {
+    public void sum(Matrix matrix) {
         if (getColLength() != matrix.getColLength() || getRowLength() != matrix.getRowLength()) {
-            throw new Exception("Matrizes com largura ou tamanho diferente conforme regra de soma de matriz.");
+            throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de soma de matriz.");
         }
         map((v, row, col) -> v + matrix.get(row, col));
     }
 
-    public void multiply(Matrix matrix) throws Exception {
+    public void multiply(Matrix matrix) {
         if (getRowLength() != matrix.getColLength() || getColLength() != matrix.getRowLength()) {
-            throw new Exception("Matrizes com largura ou tamanho diferente conforme regra de multiplicação de matriz.");
+            throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de multiplicação de matriz.");
         }
 
         Matrix result = new Matrix(data.length, data[0].length);
