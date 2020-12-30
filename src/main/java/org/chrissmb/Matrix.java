@@ -65,10 +65,10 @@ public class Matrix {
 
         Matrix result = new Matrix(getRowLength(), matrix.getColLength());
 
-        for (int i = 0; i < data.length; i++) {
-            for (int j = 0; j < data[i].length; j++) {
+        for (int i = 0; i < result.getRowLength(); i++) {
+            for (int j = 0; j < result.getColLength(); j++) {
                 double soma = 0;
-                for (int k = 0; k < data[j].length; k++) {
+                for (int k = 0; k < matrix.getColLength(); k++) {
                     soma += (get(i, k) * matrix.get(k, j));
                 }
                 result.set(i, j, soma);
