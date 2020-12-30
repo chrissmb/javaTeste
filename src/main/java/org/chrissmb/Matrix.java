@@ -76,6 +76,14 @@ public class Matrix {
         map((v, row, col) -> Math.random());
     }
 
+    public void sigmoid() {
+        map((v, row, col) -> 1 / (1 + Math.exp(-v)));
+    }
+
+    public void dsigmoid() {
+        map((v, row, col) -> v * (1 - v));
+    }
+
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("000.00");
