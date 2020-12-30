@@ -78,16 +78,16 @@ public class Matrix {
         return map((v, row, col) -> result.get(row, col));
     }
 
-    public void randomize() {
-        map((v, row, col) -> Math.random());
+    public Matrix randomize() {
+        return map((v, row, col) -> Math.random());
     }
 
-    public void sigmoid() {
-        map((v, row, col) -> 1 / (1 + Math.exp(-v)));
+    public Matrix sigmoid() {
+        return map((v, row, col) -> 1 / (1 + Math.exp(-v)));
     }
 
-    public void dsigmoid() {
-        map((v, row, col) -> v * (1 - v));
+    public Matrix dsigmoid() {
+        return map((v, row, col) -> v * (1 - v));
     }
 
     @Override
