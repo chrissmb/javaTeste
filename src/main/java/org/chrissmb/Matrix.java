@@ -63,7 +63,7 @@ public class Matrix {
             throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de multiplicação de matriz.");
         }
 
-        Matrix result = new Matrix(data.length, data[0].length);
+        Matrix result = new Matrix(getRowLength(), matrix.getColLength());
 
         for (int i = 0; i < data.length; i++) {
             for (int j = 0; j < data[i].length; j++) {
