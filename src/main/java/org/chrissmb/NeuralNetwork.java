@@ -22,15 +22,15 @@ public class NeuralNetwork {
     }
     
     public Matrix predict(Double [] inputArray) {
-        Matrix matrix = new Matrix(new Double[][] {inputArray});
-        matrix.multiply(weightsInHidden); // hidden
-        matrix.sum(biasHidden);
-        matrix.sigmoid();
+        Matrix input = Matrix.fromArray(inputArray);
+        Matrix hidden = input.multiply(weightsInHidden);
+        hidden.sum(biasHidden);
+        hidden.sigmoid();
 
-        matrix.multiply(weightsHiddenOutput); // output
-        matrix.sum(biasOutput);
-        matrix.sigmoid();
+        Matrix output = hidden.multiply(weightsHiddenOutput);
+        output.sum(biasOutput);
+        output.sigmoid();
 
-        return matrix;
+        return output;
     }
 }

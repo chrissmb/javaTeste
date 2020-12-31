@@ -41,6 +41,14 @@ public class Matrix {
         return data;
     }
 
+    public static Matrix fromArray(Double[] array) {
+        Matrix m = new Matrix(array.length, 1);
+        for (int i = 0; i < array.length; i++) {
+            m.set(i, 0, array[i]);
+        }
+        return m;
+    }
+
     public Matrix map(ApplyMatrix fn) {
         Matrix m = new Matrix(getRowLength(), getColLength());
         for (int i = 0; i < m.getRowLength(); i++) {
