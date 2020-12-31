@@ -72,7 +72,7 @@ public class NeuralNetwork {
 
     public void fit(double[][] inputs, double[][] targets, int epochs) {
         for (int i = 0; i < epochs; i++) {
-            int sample = (int) ((Math.random() * 10) % inputs.length);
+            int sample = (int) (Math.random() * inputs.length);
             train(inputs[sample], targets[sample]);
         }
     }
