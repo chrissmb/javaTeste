@@ -59,11 +59,27 @@ public class Matrix {
         return m;
     }
 
-    public Matrix sum(Matrix matrix) {
+    public Matrix add(Matrix matrix) {
         if (getColLength() != matrix.getColLength() || getRowLength() != matrix.getRowLength()) {
             throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de soma de matriz.");
         }
         return map((v, row, col) -> v + matrix.get(row, col));
+    }
+
+    public Matrix add(double d) {
+        return map((v, row, col) -> v + d);
+    }
+
+    public Matrix subtract(Matrix matrix) {
+        if (getColLength() != matrix.getColLength() || getRowLength() != matrix.getRowLength()) {
+            throw new RuntimeException("Matrizes com largura ou tamanho diferente conforme regra de subtração de matriz.");
+        }
+        return map((v, row, col) -> v - matrix.get(row, col));
+    }
+
+    public static Matrix transpose(Matrix matrix) {
+        Matrix result = new Matrix(matrix.getColLength(), matrix.getRowLength());
+        return result.map((v, row, col) -> v + matrix.get(col, row));
     }
 
     public Matrix multiply(Matrix matrix) {
@@ -84,6 +100,10 @@ public class Matrix {
         }
 
         return result;
+    }
+
+    public Matrix multiply(double d) {
+        return map((v, row, col) -> v * d);
     }
 
     public void randomize() {

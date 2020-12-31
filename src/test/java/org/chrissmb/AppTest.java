@@ -22,7 +22,7 @@ public class AppTest {
         Matrix m1 = new Matrix(new Double[][] {{2d, 3d}, {4d, 5d}});
         Matrix m2 = new Matrix(new Double[][] {{1d, 2d}, {3d, 4d}});
         Matrix expected = new Matrix(new Double[][] {{3d, 5d}, {7d, 9d}});
-        Matrix actual = m1.sum(m2);
+        Matrix actual = m1.add(m2);
         assertEquals(expected, actual);
     }
 
