@@ -76,18 +76,19 @@ public class Matrix {
         for (int i = 0; i < result.getRowLength(); i++) {
             for (int j = 0; j < result.getColLength(); j++) {
                 double soma = 0;
-                for (int k = 0; k < matrix.getColLength(); k++) {
+                for (int k = 0; k < getColLength(); k++) {
                     soma += (get(i, k) * matrix.get(k, j));
                 }
                 result.set(i, j, soma);
             }
         }
 
-        return map((v, row, col) -> result.get(row, col));
+        return result;
     }
 
-    public Matrix randomize() {
-        return map((v, row, col) -> Math.random());
+    public void randomize() {
+        Matrix m = map((v, row, col) -> Math.random());
+        setData(m.getData());
     }
 
     public Matrix sigmoid() {

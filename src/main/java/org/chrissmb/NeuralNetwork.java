@@ -23,11 +23,11 @@ public class NeuralNetwork {
     
     public Matrix predict(Double [] inputArray) {
         Matrix input = Matrix.fromArray(inputArray);
-        Matrix hidden = input.multiply(weightsInHidden);
+        Matrix hidden = weightsInHidden.multiply(input);
         hidden.sum(biasHidden);
         hidden.sigmoid();
 
-        Matrix output = hidden.multiply(weightsHiddenOutput);
+        Matrix output = weightsHiddenOutput.multiply(hidden);
         output.sum(biasOutput);
         output.sigmoid();
 
