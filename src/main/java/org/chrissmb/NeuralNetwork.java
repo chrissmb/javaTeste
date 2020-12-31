@@ -47,7 +47,7 @@ public class NeuralNetwork {
         Matrix target = Matrix.fromArray(targetArray);
         Matrix error = target.subtract(output);
         Matrix gradient = output.dsigmoid();
-        gradient = gradient.multiply(error);
+        gradient = gradient.multiplyValue(error);
         gradient = gradient.multiply(learningHate);
 
         Matrix hiddenTransposed = Matrix.transpose(hidden);
@@ -60,7 +60,7 @@ public class NeuralNetwork {
         Matrix hiddenError = weightsHiddenOutputTransposed.multiply(error);
 
         Matrix hiddenGradient = hidden.dsigmoid();
-        hiddenGradient = hiddenGradient.multiply(hiddenError);
+        hiddenGradient = hiddenGradient.multiplyValue(hiddenError);
         hiddenGradient = hiddenGradient.multiply(learningHate);
 
         Matrix inputTransposed = Matrix.transpose(input);
@@ -72,7 +72,7 @@ public class NeuralNetwork {
 
     public void fit(double[][] inputs, double[][] targets, int epochs) {
         for (int i = 0; i < epochs; i++) {
-            int sample = Math.toIntExact(Math.round(Math.random() * inputs.length));
+            int sample = (int) ((Math.random() * 10) % inputs.length);
             train(inputs[sample], targets[sample]);
         }
     }

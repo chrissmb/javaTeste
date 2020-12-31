@@ -99,6 +99,10 @@ public class Matrix {
         return result;
     }
 
+    public Matrix multiplyValue(Matrix matrix) {
+        return map((v, row, col) -> v * matrix.get(row, col));
+    }
+
     public Matrix multiply(double d) {
         return map((v, row, col) -> v * d);
     }
