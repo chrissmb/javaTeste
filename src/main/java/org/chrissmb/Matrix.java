@@ -4,20 +4,17 @@ import java.text.DecimalFormat;
 
 public class Matrix {
 
-    private Double[][] data;
+    private double[][] data;
 
     public Matrix(int row, int col) {
-        data = new Double[row][col];
+        data = new double[row][col];
     }
 
-    public Matrix(Double[][] data) {
+    public Matrix(double[][] data) {
         this.data = data;
     }
 
     public double get(int row, int col) {
-        if (data[row][col] == null) {
-            return 0d;
-        }
         return data[row][col];
     }
 
@@ -33,15 +30,15 @@ public class Matrix {
         return data[0].length;
     }
 
-    public void setData(Double[][] data) {
+    public void setData(double[][] data) {
         this.data = data;
     }
 
-    public Double[][] getData() {
+    public double[][] getData() {
         return data;
     }
 
-    public static Matrix fromArray(Double[] array) {
+    public static Matrix fromArray(double[] array) {
         Matrix m = new Matrix(array.length, 1);
         for (int i = 0; i < array.length; i++) {
             m.set(i, 0, array[i]);
