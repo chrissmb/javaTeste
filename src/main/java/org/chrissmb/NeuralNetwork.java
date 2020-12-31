@@ -24,12 +24,12 @@ public class NeuralNetwork {
     public Matrix predict(double[] inputArray) {
         Matrix input = Matrix.fromArray(inputArray);
         Matrix hidden = weightsInputHidden.multiply(input);
-        hidden.add(biasHidden);
-        hidden.sigmoid();
+        hidden = hidden.add(biasHidden);
+        hidden = hidden.sigmoid();
 
         Matrix output = weightsHiddenOutput.multiply(hidden);
-        output.add(biasOutput);
-        output.sigmoid();
+        output = output.add(biasOutput);
+        output = output.sigmoid();
 
         return output;
     }
@@ -37,12 +37,12 @@ public class NeuralNetwork {
     public void train(double[] inputArray, double[] targetArray) {
         Matrix input = Matrix.fromArray(inputArray);
         Matrix hidden = weightsInputHidden.multiply(input);
-        hidden.add(biasHidden);
-        hidden.sigmoid();
+        hidden = hidden.add(biasHidden);
+        hidden = hidden.sigmoid();
 
         Matrix output = weightsHiddenOutput.multiply(hidden);
-        output.add(biasOutput);
-        output.sigmoid();
+        output = output.add(biasOutput);
+        output = output.sigmoid();
 
         Matrix target = Matrix.fromArray(targetArray);
         Matrix error = target.subtract(output);
