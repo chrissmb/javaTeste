@@ -8,7 +8,7 @@ public class NeuralNetwork {
             biasHidden,
             biasOutput;
     
-    private double learningHate;
+    private double learningHate = 0.01;
 
     public NeuralNetwork(int input, int hidden, int output) {
         weightsInHidden = new Matrix(hidden, input);

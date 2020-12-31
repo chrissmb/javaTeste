@@ -107,7 +107,7 @@ public class Matrix {
     }
 
     public void randomize() {
-        Matrix m = map((v, row, col) -> Math.random());
+        Matrix m = map((v, row, col) -> Math.random() * 2 - 1);
         setData(m.getData());
     }
 
