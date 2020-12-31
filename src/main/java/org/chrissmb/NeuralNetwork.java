@@ -69,4 +69,11 @@ public class NeuralNetwork {
         weightsInputHidden = weightsInputHidden.add(weightsInputHiddenDelta);
         biasHidden = biasHidden.add(hiddenGradient);
     }
+
+    public void fit(double[][] inputs, double[][] targets, int epochs) {
+        for (int i = 0; i < epochs; i++) {
+            int sample = Math.toIntExact(Math.round(Math.random() * inputs.length));
+            train(inputs[sample], targets[sample]);
+        }
+    }
 }
